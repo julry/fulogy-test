@@ -1,0 +1,30 @@
+.infoContainer{
+  display: flex;
+  background: linear-gradient(270deg, #1A78C2 0%, #1A78C2 101.06%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  padding: 2.34375vh 2.1978vw;
+  margin: 2.34375vh 0;
+  align-items: center;
+  justify-content: space-between;
+  p{
+    font-weight: 600;
+    font-size: 2.1978vw;
+  }
+}
+.userInfo{
+  display: flex;
+  align-items: center;
+}
+
+.infoAvatar{
+  width: 7.8125vh;
+  height: 7.8125vh;
+  margin-right: 3.7692vw;
+}
+
+@media screen and (max-width: 640px){
+  .infoContainer p{
+     font-size: 14px;
+  }
+}
