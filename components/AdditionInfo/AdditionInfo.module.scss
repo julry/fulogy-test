@@ -1,18 +1,19 @@
-.addition-info-wrapper{
+.additionInfoWrapper{
     background: #FFFFFF;
     flex-direction: column;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
 }
-.editable-wrapper{
+.editableWrapper{
     display: flex;
-    padding-top: 24px;
+    padding-top: 40px;
+    justify-content: space-evenly;
 }
-.button-wrapper{
+.buttonWrapper{
     display: flex;
     justify-content: center;
 }
-.save-button{
+.saveButton{
     background-color: #01BDA7;
     color: white;
     outline: none;
@@ -23,4 +24,11 @@
     font-weight: 600;
     font-size: 14px;
     margin: 26px 0 44px;
+}
+
+@media screen and (max-width: 640px){
+    .editableWrapper{
+        flex-direction: column;
+        padding-top: 2.9929vh;
+    }
 }

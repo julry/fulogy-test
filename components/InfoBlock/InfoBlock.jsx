@@ -1,6 +1,6 @@
-import Photo from "./Photo";
-import EditButton from "./EditButton/EditButton";
-import styled from '../styles/InfoBlock.module.scss';
+import Photo from "../Photo";
+import EditButton from "../EditButton/EditButton";
+import styled from './InfoBlock.module.scss';
 
 const InfoBlock = (props) => {
     return (

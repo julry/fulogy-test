@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import PersonalData from "./PersonalData";
+import PersonalData from "../PersonalData/PersonalData";
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 import CallIcon from '@material-ui/icons/Call';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
-import { isEmailCorrect, isNameCorrect, isPhoneCorrect } from "../utils/isCorrect";
-import styled from '../styles/AdditionInfo.module.css';
+import { isEmailCorrect, isNameCorrect, isPhoneCorrect } from "../../utils/isCorrect";
+import styled from './AdditionInfo.module.scss';
 
 const AdditionInfo = (props) =>
 {
@@ -14,16 +14,14 @@ const AdditionInfo = (props) =>
         marginTop: '-5px'
     }
 
+
     const phoneIcon = <CallIcon style={iconStyle} />
     const emailIcon = <AlternateEmailIcon style={iconStyle} />
     const profileIcon = <AssignmentIndIcon style={iconStyle} />
     const editable = props.edit;
 
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
 
-    const err = !(isEmailCorrect(email)&&isNameCorrect(name)&&isPhoneCorrect(phoneNumber));
+    const err = !(isEmailCorrect(props.userEmail)&&isNameCorrect(props.userName)&&isPhoneCorrect(props.userPhone));
 
     return (
         <div className={ styled.additionInfoWrapper}>
@@ -32,7 +30,7 @@ const AdditionInfo = (props) =>
                     icon = {profileIcon}
                     info ={'Укажите ваши фамилию и имя'}
                     edit={editable}
-                    setInfo={setName}
+                    setInfo={props.setName}
                     label={'Фамилия и имя'}
                     check={isNameCorrect}
                     errorMessage={'Вы неправильно ввели имя.'}
@@ -40,7 +38,7 @@ const AdditionInfo = (props) =>
 
                 <PersonalData
                     icon={emailIcon}
-                    setInfo={setEmail}
+                    setInfo={props.setEmail}
                     info={props.email ? props.email : 'Укажите e-mail'}
                     edit={editable}
                     label={'E-mail'}
@@ -52,7 +50,7 @@ const AdditionInfo = (props) =>
                     icon={phoneIcon}
                     info={props.phone ? props.phone : 'Укажите номер телефона'}
                     edit={editable}
-                    setInfo={setPhoneNumber}
+                    setInfo={props.setPhone}
                     label={'Номер телефона'}
                     check={isPhoneCorrect}
                     errorMessage={'Вы неправильно ввели номер.'}

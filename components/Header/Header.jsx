@@ -1,7 +1,7 @@
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
-import Photo from './Photo'
+import Photo from '../Photo'
 import React from "react";
-import styled from '../styles/Header.module.scss'
+import styled from './Header.module.scss'
 
 const Header = ( props ) => {
     const surname = props.name.split(' ')[0];

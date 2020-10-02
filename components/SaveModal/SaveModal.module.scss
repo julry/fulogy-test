@@ -1,0 +1,85 @@
+.modalWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(44, 44, 44, 0.5);
+  z-index:100;
+    p{
+      font-weight: 600;
+      font-size: 24px;
+      color: rgba(49, 49, 49, 0.7);
+    }
+    button{
+      border-radius: 41px;
+      font-size: 14px;
+      padding: 15px 0;
+      font-family: Open Sans,serif;
+      outline: none;
+      margin: 2.7343vh 2.0512vw 0;
+    }
+}
+
+.modalWindow{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  padding: 69px 108px 56px;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+.modalSaveButton{
+  background: #01BDA7;
+  border: none;
+  color: white;
+}
+
+.modalCancelButton{
+  border: 1px solid #00BFA5;
+  color: #00BFA5;
+  background-color: white;
+}
+
+.hidden{
+  display: none;
+}
+
+
+@media screen and (max-width:640px) {
+  .modalWindow{
+    transform: none;
+    margin: 0;
+    top: 24vh;
+    bottom: -20px;
+    left: 0;
+    width: 100%;
+    justify-content: end;
+    padding: 65px 53px;
+    border-radius: 20px;
+    p{
+      font-size: 18px;
+      margin-bottom: 2.1126vh;
+    }
+    .close{
+      display:none;
+    }
+    button{
+      margin: 4.929vh 0 0;
+    }
+  }
+
+  .success{
+    top: 83vh;
+    padding: 29px 29px 0;
+    .modalSaveButton{
+      display: none;
+    }
+  }
+}

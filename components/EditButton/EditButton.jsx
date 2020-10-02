@@ -1,12 +1,13 @@
 import EditIcon from '@material-ui/icons/Edit';
 import CloseIcon from '@material-ui/icons/Close';
 import React from "react";
+import styled from './EditButton.module.scss'
 
 
 const EditButton = (props) => {
    return(
        <>
-           <div className={'wrapper'} onClick={props.onClick}>
+           <div className={styled.wrapper} onClick={props.onClick}>
                {props.editMode ?
                     <>
                        <p>ЗАКРЫТЬ</p>
@@ -19,20 +20,7 @@ const EditButton = (props) => {
                     </>
                 }
            </div>
-        <style jsx>{
-            `
-              .wrapper{
-                  display: flex;
-                  align-items: center;
-              }
-              
-              .wrapper p{
-                font-size: 14px;
-                margin-right: 5px;
-              }
-            `
-        }
-        </style>
+
     </>)
 }
 
