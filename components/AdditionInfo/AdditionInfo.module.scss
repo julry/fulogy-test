@@ -12,6 +12,9 @@
 .buttonWrapper {
   display: flex;
   justify-content: center;
+  button{
+    cursor: pointer;
+  }
 }
 .saveButton {
   background-color: #01bda7;

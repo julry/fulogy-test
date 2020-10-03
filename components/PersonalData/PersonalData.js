@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import styled from "./PersonalData.module.scss";
+import classNames from "classnames";
 
 const PersonalData = (props) => {
   const [enterError, setEnterError] = useState(false);
+  const dataContainer = classNames([`${styled.dataWrapper}`], {
+    [`${styled.editWrapper}`]: props.edit,
+  });
   return (
-    <div
-      className={
-        styled.dataWrapper + (props.edit ? " " + styled.editWrapper : "")
-      }
-    >
+    <div className={dataContainer}>
       <div className={styled.iconWrapper}>{props.icon}</div>
       {props.edit ? (
         <TextField
           error={enterError}
-          id={"outlined-required" + props.info}
           label={props.label}
           variant="outlined"
           fullWidth
@@ -23,10 +22,7 @@ const PersonalData = (props) => {
             shrink: true,
           }}
           onChange={(e) => props.setInfo(e.target.value)}
-          onBlur={(e) => {
-            console.log(e.target.value);
-            setEnterError(!props.check(e.target.value));
-          }}
+          onBlur={(e) => setEnterError(!props.check(e.target.value))}
           inputProps={{
             placeholder: props.info,
           }}

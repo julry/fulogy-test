@@ -12,6 +12,9 @@
     color: rgba(49, 49, 49, 0.7);
   }
   .close {
+    cursor: pointer;
+  }
+  .closeHidden{
     display: none;
   }
   button {
@@ -20,6 +23,7 @@
     padding: 15px 0;
     font-family: Open Sans, serif;
     outline: none;
+    cursor: pointer;
     margin: 2.7343vh 2.0512vw 0;
   }
 }

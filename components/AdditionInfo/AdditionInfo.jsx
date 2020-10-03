@@ -40,13 +40,13 @@ const AdditionInfo = (props) => {
     isPhoneCorrect(props.userPhone)
   );
 
+  const editWrapper = classNames({
+    [`${styled.editableWrapper}`]: props.edit,
+  });
+
   return (
     <div className={styled.additionInfoWrapper}>
-      <div
-        className={classNames({
-          [`${styled.editableWrapper}`]: props.edit,
-        })}
-      >
+      <div className={editWrapper}>
         {props.edit && (
           <PersonalData
             icon={profileIcon}
@@ -83,8 +83,7 @@ const AdditionInfo = (props) => {
       {props.edit && (
         <div className={styled.buttonWrapper}>
           <button className={styled.saveButton} onClick={confirmData}>
-            {" "}
-            Сохранить изменения{" "}
+            Сохранить изменения
           </button>
         </div>
       )}

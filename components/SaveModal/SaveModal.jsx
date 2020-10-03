@@ -26,28 +26,36 @@ const SaveModal = (props) => {
     right: "24px",
   };
 
-  const closeModalWindow = () => {
+  const closeModal = () => {
     props.setConfirm(false);
   };
 
-  const closeAfterSave = () => {
+  const closeModalAfterSave = () => {
     if (isSaved) props.setConfirm(false);
   };
 
+  const modalWindow = classNames([`${styled.modalWindow}`], {
+    [`${styled.success}`]: isSaved,
+  });
+
+  const cancel = classNames([`${styled.modalCancelButton}`], {
+    [`${styled.hidden}`]: isSaved,
+  });
+
+  const closed = classNames([`${styled.close}`], {
+    [`${styled.closeHidden}`]: isSaved,
+  });
+
   return (
-    <div className={styled.modalWrapper} onClick={closeAfterSave}>
-      <div
-        className={classNames([`${styled.modalWindow}`], {
-          [`${styled.success}`]: isSaved,
-        })}
-      >
-        <div className={classNames({ [`${styled.close}`]: isSaved })}>
-          <CloseIcon style={closeStyle} onClick={closeModalWindow} />
+    <div className={styled.modalWrapper} onClick={closeModalAfterSave}>
+      <div className={modalWindow}>
+        <div className={closed}>
+          <CloseIcon style={closeStyle} onClick={closeModal} />
         </div>
 
         <p> {isSaved ? "Данные успешно сохранены" : "Сохранить изменения?"}</p>
         {isSaved ? (
-          <button className={styled.modalSaveButton} onClick={closeModalWindow}>
+          <button className={styled.modalSaveButton} onClick={closeModal}>
             Хорошо
           </button>
         ) : (
@@ -55,12 +63,7 @@ const SaveModal = (props) => {
             Сохранить
           </button>
         )}
-        <button
-          className={classNames([`${styled.modalCancelButton}`], {
-            [`${styled.hidden}`]: isSaved,
-          })}
-          onClick={closeModalWindow}
-        >
+        <button className={cancel} onClick={closeModal}>
           Не сохранять
         </button>
       </div>

@@ -12,26 +12,6 @@ const CURRENT_USER = {
   phone: "",
 };
 
-async function save(data) {
-  const response = await fetch("/api/posts", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-token-access": "random",
-    },
-    body: JSON.stringify(data),
-  });
-  return await response.json();
-}
-
-const getItem = (key, defaultValue = " ") => {
-  const value = localStorage.getItem(key);
-  if (!value) {
-    return defaultValue;
-  }
-  return value;
-};
-
 export default function AccountPage() {
   const [editMode, setEditMode] = useState(false);
   const [confirmMode, setConfirmMode] = useState(false);
@@ -44,6 +24,30 @@ export default function AccountPage() {
     setUserName(getItem("name", CURRENT_USER.name));
     setUserEmail(getItem("email", CURRENT_USER.email));
   }, []);
+
+  async function save(data) {
+    const response = await fetch("/api/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-token-access": "random",
+      },
+      body: JSON.stringify(data),
+    });
+    return await response.json();
+  }
+
+  const getItem = (key, defaultValue = " ") => {
+    const value = localStorage.getItem(key);
+    if (!value) {
+      return defaultValue;
+    }
+    return value;
+  };
+
+  const toggleEditMode = () => {
+    setEditMode((prevMode) => !prevMode);
+  };
 
   return (
     <div className={styled.container}>
@@ -60,7 +64,7 @@ export default function AccountPage() {
         <InfoBlock
           name={CURRENT_USER.name}
           editMode={editMode}
-          setEditMode={() => setEditMode(!editMode)}
+          setEditMode={toggleEditMode}
         />
 
         <AdditionInfo
