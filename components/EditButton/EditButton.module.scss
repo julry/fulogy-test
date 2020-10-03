@@ -1,14 +1,14 @@
-.wrapper{
+.wrapper {
   display: flex;
   align-items: center;
-  p{
+  p {
     font-size: 14px !important;
     margin-right: 5px;
   }
 }
 
-@media screen and (max-width: 640px){
-  .wrapper p{
-    display:none;
+@media screen and (max-width: 640px) {
+  .wrapper p {
+    display: none;
   }
 }

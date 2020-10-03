@@ -1,22 +1,23 @@
-import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
-import Photo from '../Photo'
+import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
+import Photo from "../Photo/Photo";
 import React from "react";
-import styled from './Header.module.scss'
+import styled from "./Header.module.scss";
 
-const Header = ( props ) => {
-    const surname = props.name.split(' ')[0];
-    const name = props.name.split(' ')[1]
-    return (
-        <div className={styled.headerWrapper}>
-            <NotificationsNoneIcon />
-            <div className={styled.vl}/>
-            <div className={styled.navAvatar}>
-                    <Photo />
-            </div>
-            <p>{surname} {name[0]}.</p>
-        </div>
-    )
-}
+const Header = (props) => {
+  const [surname, name] = props.name.split(" ");
 
+  return (
+    <div className={styled.headerWrapper}>
+      <NotificationsNoneIcon />
+      <div className={styled.verticalLine} />
+      <div className={styled.navAvatar}>
+        <Photo />
+      </div>
+      <p>
+        {surname} {name[0]}.
+      </p>
+    </div>
+  );
+};
 
 export default Header;

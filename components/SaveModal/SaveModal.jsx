@@ -1,65 +1,71 @@
-import React, {useState} from "react";
-import CloseIcon from '@material-ui/icons/Close';
-import styled from './SaveModal.module.scss';
+import React, { useState } from "react";
+import CloseIcon from "@material-ui/icons/Close";
+import styled from "./SaveModal.module.scss";
+import classNames from "classnames";
 
 const SaveModal = (props) => {
-    const [isSaved, setIsSaved] = useState (false);
-    const data = {
-        name: props.name,
-        email: props.email,
-        phone: props.phone
-    }
-    const saveData = () => {
-        props.save(data);
-        setIsSaved(true);
-        localStorage.setItem('name', props.name);
-        localStorage.setItem('email', props.email);
-        localStorage.setItem('phone', props.phone);
-    }
-    return(
-        <div
-            className={styled.modalWrapper }
-            onClick={()=> isSaved ? props.setConfirm(false) : null}
-        >
-            <div className={styled.modalWindow + (isSaved ? ' ' + styled.success : '')}>
-                <div className={ isSaved ? styled.close: ''}>
-                    <CloseIcon
-                        style={{
-                            color: '#828282',
-                            position: 'absolute',
-                            top: '24px',
-                            right: '24px'
-                        }}
-                        onClick={() => props.setConfirm(false)}
-                    />
-                </div>
+  const [isSaved, setIsSaved] = useState(false);
+  const data = {
+    name: props.name,
+    email: props.email,
+    phone: props.phone,
+  };
+  const saveData = () => {
+    props.save(data).then(() => {
+      setIsSaved(true);
+      localStorage.setItem("name", props.name);
+      localStorage.setItem("email", props.email);
+      localStorage.setItem("phone", props.phone);
+    });
+  };
 
-                <p> {isSaved ? 'Данные успешно сохранены' : 'Сохранить изменения?'}</p>
-                {isSaved ?
-                    <button
-                        className={styled.modalSaveButton}
-                        onClick={() => props.setConfirm(false)}
-                    >
-                        Хорошо
-                    </button>
-                    :
-                    <button
-                        className={styled.modalSaveButton}
-                        onClick={() => saveData()}
-                    >
-                        Сохранить
-                    </button>
-                }
-                <button
-                    className={styled.modalCancelButton + " " + (isSaved && styled.hidden)}
-                    onClick={() => props.setConfirm(false)}
-                >
-                    Не сохранять
-                </button>
+  const closeStyle = {
+    color: "#828282",
+    position: "absolute",
+    top: "24px",
+    right: "24px",
+  };
 
-            </div>
+  const closeModalWindow = () => {
+    props.setConfirm(false);
+  };
+
+  const closeAfterSave = () => {
+    if (isSaved) props.setConfirm(false);
+  };
+
+  return (
+    <div className={styled.modalWrapper} onClick={closeAfterSave}>
+      <div
+        className={classNames([`${styled.modalWindow}`], {
+          [`${styled.success}`]: isSaved,
+        })}
+      >
+        <div className={classNames({ [`${styled.close}`]: isSaved })}>
+          <CloseIcon style={closeStyle} onClick={closeModalWindow} />
         </div>
-    )
-}
+
+        <p> {isSaved ? "Данные успешно сохранены" : "Сохранить изменения?"}</p>
+        {isSaved ? (
+          <button className={styled.modalSaveButton} onClick={closeModalWindow}>
+            Хорошо
+          </button>
+        ) : (
+          <button className={styled.modalSaveButton} onClick={saveData}>
+            Сохранить
+          </button>
+        )}
+        <button
+          className={classNames([`${styled.modalCancelButton}`], {
+            [`${styled.hidden}`]: isSaved,
+          })}
+          onClick={closeModalWindow}
+        >
+          Не сохранять
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default SaveModal;

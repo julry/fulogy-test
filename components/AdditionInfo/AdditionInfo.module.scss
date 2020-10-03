@@ -1,34 +1,34 @@
-.additionInfoWrapper{
-    background: #FFFFFF;
-    flex-direction: column;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
+.additionInfoWrapper {
+  background: #ffffff;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
 }
-.editableWrapper{
-    display: flex;
-    padding-top: 40px;
-    justify-content: space-evenly;
+.editableWrapper {
+  display: flex;
+  padding-top: 40px;
+  justify-content: space-evenly;
 }
-.buttonWrapper{
-    display: flex;
-    justify-content: center;
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
 }
-.saveButton{
-    background-color: #01BDA7;
-    color: white;
-    outline: none;
-    border: none;
-    padding: 15px 26px;
-    border-radius: 36px;
-    font-family: Open Sans,serif;
-    font-weight: 600;
-    font-size: 14px;
-    margin: 26px 0 44px;
+.saveButton {
+  background-color: #01bda7;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 15px 26px;
+  border-radius: 36px;
+  font-family: Open Sans, serif;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 26px 0 44px;
 }
 
-@media screen and (max-width: 640px){
-    .editableWrapper{
-        flex-direction: column;
-        padding-top: 2.9929vh;
-    }
+@media screen and (max-width: 640px) {
+  .editableWrapper {
+    flex-direction: column;
+    padding-top: 2.9929vh;
+  }
 }
